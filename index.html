@@ -113,21 +113,31 @@
         .q-card.wrong { background: #fef2f2; border-color: #fca5a5; }
         .q-expl { font-size: 12px; color: #475569; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 4px; display: none; }
 
-        /* Lock Screen */
+        /* Lock Screen & Registration Modal */
         #lock-screen {
             position: fixed; inset: 0; background: rgba(15, 23, 42, 0.96);
-            display: none; align-items: center; justify-content: center; z-index: 9999; padding: 20px;
+            display: none; align-items: center; justify-content: center; z-index: 9999; padding: 15px;
         }
         .lock-card {
-            background: white; padding: 25px; border-radius: 16px; text-align: center;
-            max-width: 350px; width: 100%;
+            background: white; padding: 22px; border-radius: 16px; text-align: center;
+            max-width: 400px; width: 100%; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        .lock-input {
-            width: 100%; padding: 10px; font-size: 16px; text-align: center;
-            border: 2px solid #cbd5e1; border-radius: 8px; margin: 12px 0; outline: none;
+        .form-input {
+            width: 100%; padding: 10px; font-size: 14px;
+            border: 1.5px solid #cbd5e1; border-radius: 8px; margin-bottom: 10px; outline: none;
         }
-        .lock-btn {
-            background: var(--primary); color: white; width: 100%; padding: 12px;
+        .form-input:focus { border-color: var(--primary); }
+        .btn-wa {
+            background: #25D366; color: white; width: 100%; padding: 12px;
+            border: none; border-radius: 8px; font-weight: bold; font-size: 15px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
+            margin-bottom: 15px; box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+        }
+        .unlock-box {
+            background: #f1f5f9; padding: 14px; border-radius: 10px; border: 1px dashed #94a3b8;
+        }
+        .btn-unlock {
+            background: var(--primary); color: white; width: 100%; padding: 10px;
             border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
         }
     </style>
@@ -137,7 +147,7 @@
     <!-- Header Section -->
     <div class="hero-header">
         <div class="timer-badge">
-            <span>⏱️ කාලය: </span>
+            <span>⏱️ ඉතිරි කාලය: </span>
             <span id="timer-display">05:00</span>
         </div>
         <div class="profile-card">
@@ -160,10 +170,10 @@
 
             <!-- 2. Step-by-Step Instructions Below Image -->
             <div class="steps-container">
-                <div class="step-pill"><strong>පියවර 1:</strong> සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස අගයන් වෙන් කරගන්න.</div>
-                <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක ස්පර්ශ කරන්න (උදා: 7 × 8 සඳහා වම් අතේ 7 සහ දකුණු අතේ 8).</div>
-                <div class="step-pill"><strong>පියවර 3:</strong> ස්පර්ශ කළ ඇඟිලි සහ ඊට පහළ සියලු ඇඟිලි ගණන් කර 10න් ගුණ කරන්න (ඇඟිලි 5 = 50).</div>
-                <div class="step-pill"><strong>පියවර 4:</strong> ඉහළින් ඉතිරි වූ ඇඟිලි ගණන් දෙක එකිනෙක ගුණ කර එකතු කරන්න (3 × 2 = 6 👉 50 + 6 = 56).</div>
+                <div class="step-pill"><strong>පියවර 1:</strong> සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස අගයන් වෙන් කරගන්න.[cite: 1]</div>
+                <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක ස්පර්ශ කරන්න (උදා: 7 × 8 සඳහා වම් අතේ 7 සහ දකුණු අතේ 8).[cite: 1]</div>
+                <div class="step-pill"><strong>පියවර 3:</strong> ස්පර්ශ කළ ඇඟිලි සහ ඊට පහළ සියලු ඇඟිලි ගණන් කර 10න් ගුණ කරන්න (ඇඟිලි 5 = 50).[cite: 1]</div>
+                <div class="step-pill"><strong>පියවර 4:</strong> ඉහළින් ඉතිරි වූ ඇඟිලි ගණන් දෙක එකිනෙක ගුණ කර එකතු කරන්න (3 × 2 = 6 👉 50 + 6 = 56).[cite: 1]</div>
             </div>
 
             <!-- 3. Parallel Side-by-Side Simulator Box -->
@@ -210,15 +220,33 @@
         </div>
     </div>
 
-    <!-- 20-min Password Lock Screen -->
+    <!-- 5-Minute Auto-Lock & WhatsApp Activation Modal -->
     <div id="lock-screen">
         <div class="lock-card">
-            <div style="font-size:36px; margin-bottom:8px;">🔒</div>
-            <h3>කාලය අවසන් විය</h3>
-            <p style="font-size:13px; color:#64748b; margin-top:4px;">නැවත විවෘත කිරීමට මුරපදය (Password) ඇතුළත් කරන්න.</p>
-            <input type="password" id="pass-input" class="lock-input" placeholder="Password ඇතුළත් කරන්න">
-            <button class="lock-btn" onclick="unlockApp()">විවෘත කරන්න</button>
-            <p id="lock-err" style="color:red; font-size:12px; margin-top:6px; display:none;">මුරපදය වැරදියි!</p>
+            <div style="font-size:36px; margin-bottom:6px;">⏱️ 🔒</div>
+            <h3 style="color:#0f172a; margin-bottom:4px;">නොමිලේ විනාඩි 5 කාලය අවසන් විය</h3>
+            <p style="font-size:13px; color:#64748b; margin-bottom:14px;">
+                දිගටම මෙම ගණිත පාඩම භාවිත කිරීමට ඔබගේ තොරතුරු ලබා දී WhatsApp හරහා Activation Code එක ලබාගන්න.
+            </p>
+
+            <!-- Registration Step -->
+            <input type="text" id="reg-name" class="form-input" placeholder="ශිෂ්‍යයාගේ නම">
+            <input type="text" id="reg-school" class="form-input" placeholder="පාසල සහ පන්තිය">
+            <input type="tel" id="reg-phone" class="form-input" placeholder="ඔබගේ WhatsApp අංකය">
+            
+            <button class="btn-wa" onclick="sendWhatsAppRequest()">
+                📲 WhatsApp මඟින් Code එක ඉල්ලන්න
+            </button>
+
+            <!-- Unlock Step -->
+            <div class="unlock-box">
+                <div style="font-size:12.5px; font-weight:bold; color:#334155; margin-bottom:6px;">
+                    ඔබට ලැබුණු Activation Code එක ඇතුළත් කරන්න:
+                </div>
+                <input type="text" id="unlock-code" class="form-input" style="text-align:center; font-weight:bold; letter-spacing:1px; margin-bottom:8px;" placeholder="උදා: NB-4821">
+                <button class="btn-unlock" onclick="verifyActivation()">විවෘත කරන්න (Unlock)</button>
+                <p id="lock-err" style="color:#ef4444; font-size:12px; margin-top:6px; display:none; font-weight:bold;">කේතය වැරදියි! නැවත පරීක්ෂා කරන්න.</p>
+            </div>
         </div>
     </div>
 
@@ -314,29 +342,70 @@
             res.style.color = score >= 15 ? '#16a34a' : '#d97706';
         }
 
-        // Lock & Timer
-        let timeLeft = 20 * 60;
-        const timerDisp = document.getElementById('timer-display');
+        // ================= 5-MINUTE TRIAL & ACTIVATION SYSTEM =================
+        const ADMIN_PHONE = "94784693750"; // ඔබගේ WhatsApp අංකය
         const lockScreen = document.getElementById('lock-screen');
+        const timerDisp = document.getElementById('timer-display');
 
-        const timerInterval = setInterval(() => {
-            timeLeft--;
-            const mins = Math.floor(timeLeft / 60);
-            const secs = timeLeft % 60;
-            timerDisp.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        // Check if device is permanently activated
+        const isActivated = localStorage.getItem('nb_math_activated');
 
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                lockScreen.style.display = 'flex';
+        if (isActivated === 'true') {
+            timerDisp.textContent = "සක්‍රියයි ✔";
+            timerDisp.parentElement.style.background = "rgba(34, 197, 94, 0.25)";
+            timerDisp.parentElement.style.borderColor = "#22c55e";
+            timerDisp.parentElement.style.color = "#86efac";
+        } else {
+            // Free 5-minute countdown (300 seconds)
+            let timeLeft = 5 * 60;
+            const trialInterval = setInterval(() => {
+                timeLeft--;
+                const mins = Math.floor(timeLeft / 60);
+                const secs = timeLeft % 60;
+                timerDisp.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(trialInterval);
+                    lockScreen.style.display = 'flex';
+                }
+            }, 1000);
+        }
+
+        // Generate or get unique device PIN
+        let devicePin = localStorage.getItem('nb_device_pin');
+        if (!devicePin) {
+            devicePin = 'NB-' + Math.floor(1000 + Math.random() * 9000);
+            localStorage.setItem('nb_device_pin', devicePin);
+        }
+
+        function sendWhatsAppRequest() {
+            const name = document.getElementById('reg-name').value.trim();
+            const school = document.getElementById('reg-school').value.trim();
+            const phone = document.getElementById('reg-phone').value.trim();
+
+            if (!name || !phone) {
+                alert('කරුණාකර ඔබගේ නම සහ දුරකථන අංකය ඇතුළත් කරන්න.');
+                return;
             }
-        }, 1000);
 
-        function unlockApp() {
-            const pass = document.getElementById('pass-input').value.trim();
-            if (pass === 'Nethmi2026') {
+            const message = `හෙලෝ, මගේ නම: ${name}%0Aපාසල/පන්තිය: ${school}%0Aමගේ දුරකථන අංකය: ${phone}%0Aමගේ Activation Code එක: *${devicePin}*%0Aකරුණාකර මගේ ගිණුම සක්‍රිය කිරීමට මෙම කේතය ලබා දෙන්න.`;
+            const waUrl = `https://wa.me/${ADMIN_PHONE}?text=${message}`;
+            window.open(waUrl, '_blank');
+        }
+
+        function verifyActivation() {
+            const inputCode = document.getElementById('unlock-code').value.trim().toUpperCase();
+            const currentPin = localStorage.getItem('nb_device_pin');
+
+            if (inputCode === currentPin || inputCode === 'NETHMI2026') {
+                localStorage.setItem('nb_math_activated', 'true');
                 lockScreen.style.display = 'none';
                 document.getElementById('lock-err').style.display = 'none';
-                timeLeft = 20 * 60;
+                timerDisp.textContent = "සක්‍රියයි ✔";
+                timerDisp.parentElement.style.background = "rgba(34, 197, 94, 0.25)";
+                timerDisp.parentElement.style.borderColor = "#22c55e";
+                timerDisp.parentElement.style.color = "#86efac";
+                alert('ඔබගේ යෙදුම සාර්ථකව සක්‍රිය විය! දැන් ඔබට අඛණ්ඩව භාවිත කළ හැක.');
             } else {
                 document.getElementById('lock-err').style.display = 'block';
             }
