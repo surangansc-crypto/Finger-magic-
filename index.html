@@ -9,90 +9,102 @@
             --primary: #4f46e5;
             --primary-dark: #3730a3;
             --secondary: #06b6d4;
-            --bg: #f1f5f9;
+            --bg: #f8fafc;
             --card-bg: #ffffff;
             --text-main: #0f172a;
-            --text-muted: #64748b;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
         body { background-color: var(--bg); color: var(--text-main); padding-bottom: 60px; }
 
-        /* Top Header / Profile Hero Section */
+        /* Header / Profile */
         .hero-header {
             background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
-            color: white; padding: 30px 15px 40px; text-align: center;
-            border-bottom-left-radius: 35px; border-bottom-right-radius: 35px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative;
+            color: white; padding: 20px 15px 30px; text-align: center;
+            border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15); position: relative;
         }
         .timer-badge {
-            position: absolute; top: 15px; right: 15px;
-            background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444;
-            padding: 6px 14px; border-radius: 20px; font-weight: bold; font-size: 13px; color: #fca5a5;
+            position: absolute; top: 12px; right: 12px;
+            background: rgba(239, 68, 68, 0.25); border: 1px solid #ef4444;
+            padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 13px; color: #fca5a5;
         }
-
-        /* Prominent Photo Card */
         .profile-card {
-            width: 170px; height: 215px; margin: 0 auto 15px;
-            border-radius: 18px; border: 4px solid #38bdf8;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4); overflow: hidden; background: #fff;
+            width: 120px; height: 150px; margin: 0 auto 10px;
+            border-radius: 14px; border: 3px solid #38bdf8;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); overflow: hidden; background: #fff;
         }
         .profile-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        .creator-tag {
-            font-size: 22px; font-weight: 800; color: #38bdf8; letter-spacing: 0.5px; margin-bottom: 4px;
-        }
-        .school-tag {
-            font-size: 15px; color: #fef08a; font-weight: 600; text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
+        .creator-tag { font-size: 19px; font-weight: 800; color: #38bdf8; margin-bottom: 3px; }
+        .school-tag { font-size: 14px; color: #fef08a; font-weight: 600; }
         .lesson-tag {
-            font-size: 18px; font-weight: 800; margin-top: 15px; color: #ffffff;
-            background: rgba(255,255,255,0.1); display: inline-block; padding: 6px 18px; border-radius: 20px;
+            font-size: 16px; font-weight: 800; margin-top: 10px; color: #ffffff;
+            background: rgba(255,255,255,0.12); display: inline-block; padding: 5px 16px; border-radius: 20px;
         }
 
-        .container { max-width: 820px; margin: -20px auto 0; padding: 0 15px; }
+        .container { max-width: 800px; margin: 15px auto; padding: 0 12px; }
         .card {
-            background: var(--card-bg); border-radius: 18px; padding: 22px;
-            margin-bottom: 22px; box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+            background: var(--card-bg); border-radius: 16px; padding: 20px;
+            margin-bottom: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
         }
         .card-title {
             font-size: 18px; font-weight: 700; color: var(--primary);
-            margin-bottom: 15px; display: flex; align-items: center; gap: 8px;
+            margin-bottom: 12px; display: flex; align-items: center; gap: 8px;
         }
 
-        /* Finger Diagram */
+        /* Image Display */
         .diagram-box {
-            text-align: center; background: #ffffff; padding: 12px;
-            border-radius: 14px; border: 2px dashed #94a3b8; margin-bottom: 16px;
+            text-align: center; background: #ffffff; padding: 10px;
+            border-radius: 12px; border: 2px dashed #94a3b8; margin-bottom: 14px;
         }
-        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; max-height: 380px; }
+        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; max-height: 320px; }
+
+        /* Interactive Simulator (ටච් කරලා හදන සාම්පල් කොටුව) */
+        .sim-box {
+            background: #eef2ff; border: 2px solid #c7d2fe; border-radius: 14px;
+            padding: 16px; margin: 15px 0; text-align: center;
+        }
+        .sim-hands { display: flex; justify-content: space-around; gap: 10px; margin: 15px 0; flex-wrap: wrap; }
+        .hand-col { display: flex; flex-direction: column; gap: 6px; align-items: center; }
+        .hand-label { font-weight: bold; font-size: 14px; color: #3730a3; margin-bottom: 4px; }
+        .finger-btn {
+            background: white; border: 2px solid #818cf8; color: #1e1b4b;
+            padding: 8px 14px; border-radius: 8px; font-size: 14px; font-weight: bold;
+            cursor: pointer; width: 140px; transition: all 0.2s;
+        }
+        .finger-btn.active { background: #4f46e5; color: white; border-color: #312e81; transform: scale(1.03); }
+        .sim-result {
+            background: white; border-radius: 10px; padding: 12px;
+            margin-top: 10px; font-size: 15px; font-weight: bold; color: #1e293b; border: 1px solid #cbd5e1;
+        }
 
         .step-pill {
             background: #f8fafc; border-left: 4px solid var(--secondary);
-            padding: 11px 15px; border-radius: 10px; margin-bottom: 9px; font-size: 14px; line-height: 1.5;
+            padding: 10px 14px; border-radius: 8px; margin-bottom: 8px; font-size: 13.5px; line-height: 1.5;
         }
 
         /* Practice Grid */
-        .action-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px; }
+        .action-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
         .btn-gen {
-            background: #0284c7; color: white; border: none; padding: 9px 16px;
-            border-radius: 8px; font-weight: bold; cursor: pointer;
+            background: #0284c7; color: white; border: none; padding: 8px 14px;
+            border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 14px;
         }
         .btn-check {
             background: #16a34a; color: white; border: none; padding: 14px;
-            border-radius: 12px; font-size: 17px; font-weight: bold; cursor: pointer;
+            border-radius: 10px; font-size: 17px; font-weight: bold; cursor: pointer;
             width: 100%; margin-top: 15px; box-shadow: 0 4px 12px rgba(22,163,74,0.3);
         }
-        .questions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
-        .q-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; }
-        .q-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+        .questions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+        .q-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px; }
+        .q-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
         .q-text { font-size: 16px; font-weight: bold; }
         .q-input {
-            width: 80px; padding: 6px; font-size: 17px; font-weight: bold;
+            width: 75px; padding: 6px; font-size: 16px; font-weight: bold;
             text-align: center; border: 2px solid #cbd5e1; border-radius: 6px; outline: none;
         }
         .q-card.correct { background: #f0fdf4; border-color: #86efac; }
         .q-card.wrong { background: #fef2f2; border-color: #fca5a5; }
-        .q-expl { font-size: 12px; color: #475569; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 5px; display: none; }
+        .q-expl { font-size: 12px; color: #475569; margin-top: 6px; border-top: 1px dashed #cbd5e1; padding-top: 4px; display: none; }
 
         /* Lock Screen */
         #lock-screen {
@@ -100,12 +112,12 @@
             display: none; align-items: center; justify-content: center; z-index: 9999; padding: 20px;
         }
         .lock-card {
-            background: white; padding: 28px; border-radius: 18px; text-align: center;
-            max-width: 360px; width: 100%;
+            background: white; padding: 25px; border-radius: 16px; text-align: center;
+            max-width: 350px; width: 100%;
         }
         .lock-input {
-            width: 100%; padding: 11px; font-size: 16px; text-align: center;
-            border: 2px solid #cbd5e1; border-radius: 8px; margin: 15px 0; outline: none;
+            width: 100%; padding: 10px; font-size: 16px; text-align: center;
+            border: 2px solid #cbd5e1; border-radius: 8px; margin: 12px 0; outline: none;
         }
         .lock-btn {
             background: var(--primary); color: white; width: 100%; padding: 12px;
@@ -115,14 +127,13 @@
 </head>
 <body>
 
-    <!-- Header Section with Large Profile Card -->
     <div class="hero-header">
         <div class="timer-badge">
             <span>⏱️ කාලය: </span>
             <span id="timer-display">20:00</span>
         </div>
         <div class="profile-card">
-            <img src="https://i.postimg.cc/vZpyjTvG/5f4a2799-6616-4063-b59c-9a98d778267d.webp" alt="Nethmi Bhagya">
+            <img src="https://lh3.googleusercontent.com/d/1X_5v9k8_placeholder" id="p-img" alt="Nethmi Bhagya">
         </div>
         <div class="creator-tag">Created by Nethmi Bhagya</div>
         <div class="school-tag">ර/කුරුවිට මධ්‍ය මහා විද්‍යාලය (ජාතික පාසල)</div>
@@ -130,16 +141,48 @@
     </div>
 
     <div class="container">
-        <!-- Tutorial Card -->
+        <!-- Tutorial & Hand Diagram -->
         <div class="card">
-            <div class="card-title">📖 ඇඟිලි වලින් ගුණ කරන ආකාරය</div>
+            <div class="card-title">📖 ඇඟිලි වල අගයන් හඳුනාගනිමු</div>
             <div class="diagram-box">
-                <img src="https://i.postimg.cc/nzfHsrs5/Screenshot-20261109-201117-(1).jpg" alt="Ascribe Values Hand Diagram">
+                <img id="h-img" src="" alt="Hand Values Diagram">
             </div>
-            <div class="step-pill"><strong>පියවර 1:</strong> අත් දෙකේම සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස අගයන් හඳුනාගන්න.[cite: 1]</div>
-            <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක එකට ස්පර්ශ කරන්න (උදා: 7 × 8 සඳහා වම් අතේ 7 සහ දකුණු අතේ 8).[cite: 1]</div>
-            <div class="step-pill"><strong>පියවර 3:</strong> ස්පර්ශ කළ ඇඟිලි සහ ඊට පහළින් ඇති සියලුම ඇඟිලි එකතු කර 10න් ගුණ කරන්න (ඇඟිලි 5 = 50).[cite: 1]</div>
-            <div class="step-pill"><strong>පියවර 4:</strong> ඉහළින් ඉතිරි වූ ඇඟිලි ගණන් දෙක එකිනෙක ගුණ කරන්න (3 × 2 = 6).[cite: 1] දැන් දෙකම එකතු කරන්න (50 + 6 = 56).[cite: 1]</div>
+
+            <!-- Interactive Hands Simulator (ටච් කර සාම්පල් හදන කොටුව) -->
+            <div class="sim-box">
+                <div style="font-size:15px; font-weight:bold; color:#312e81; margin-bottom:8px;">
+                    🖐️ ඇඟිලි ස්පර්ශ කර සාම්පල් ගණනය කර බලන්න:
+                </div>
+                <div class="sim-hands">
+                    <div class="hand-col">
+                        <span class="hand-label">👈 වම් අත</span>
+                        <button class="finger-btn" onclick="selectFinger('L', 10)">මහපටැඟිල්ල (10)</button>
+                        <button class="finger-btn" onclick="selectFinger('L', 9)">දබරැඟිල්ල (9)</button>
+                        <button class="finger-btn" onclick="selectFinger('L', 8)">මැදැඟිල්ල (8)</button>
+                        <button class="finger-btn active" onclick="selectFinger('L', 7)">වෙදැඟිල්ල (7)</button>
+                        <button class="finger-btn" onclick="selectFinger('L', 6)">සුළැඟිල්ල (6)</button>
+                    </div>
+                    <div class="hand-col">
+                        <span class="hand-label">දකුණු අත 👉</span>
+                        <button class="finger-btn" onclick="selectFinger('R', 10)">මහපටැඟිල්ල (10)</button>
+                        <button class="finger-btn" onclick="selectFinger('R', 9)">දබරැඟිල්ල (9)</button>
+                        <button class="finger-btn active" onclick="selectFinger('R', 8)">මැදැඟිල්ල (8)</button>
+                        <button class="finger-btn" onclick="selectFinger('R', 7)">වෙදැඟිල්ල (7)</button>
+                        <button class="finger-btn" onclick="selectFinger('R', 6)">සුළැඟිල්ල (6)</button>
+                    </div>
+                </div>
+                <div class="sim-result" id="sim-text">
+                    ගණනය: 7 × 8 = 56<br>
+                    <span style="font-size:13px; font-weight:normal; color:#475569;">
+                        (පහළ ඇඟිලි 5 × 10 = 50) + (ඉහළ ඇඟිලි 3 × 2 = 6) 👉 50 + 6 = 56
+                    </span>
+                </div>
+            </div>
+
+            <div class="step-pill"><strong>පියවර 1:</strong> සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස ගණන් ගන්න.[cite: 1]</div>
+            <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක ස්පර්ශ කරන්න.[cite: 1]</div>
+            <div class="step-pill"><strong>පියවර 3:</strong> ස්පර්ශ කළ ඇඟිලි සහ ඊට පහළ සියලු ඇඟිලි ගණන් කර 10න් ගුණ කරන්න (ඇඟිලි 5 = 50).[cite: 1]</div>
+            <div class="step-pill"><strong>පියවර 4:</strong> ඉහළින් ඉතිරි වූ ඇඟිලි ගණන් දෙක එකිනෙක ගුණ කර එකතු කරන්න (3 × 2 = 6 👉 50 + 6 = 56).[cite: 1]</div>
         </div>
 
         <!-- Exercises Card -->
@@ -148,26 +191,63 @@
                 <div class="card-title" style="margin-bottom:0;">📝 අභ්‍යාස ගණන් 20</div>
                 <button class="btn-gen" onclick="generateQuestions()">🎲 අලුත් ගණන් ලබාගන්න</button>
             </div>
-            <p style="font-size:13px; color:#64748b; margin-bottom:14px;">පිළිතුරු ලියා අවසානයේ පහළ ඇති "පිළිතුරු පරීක්ෂා කරන්න" බොත්තම ඔබන්න.</p>
             <div class="questions-grid" id="q-container"></div>
             <button class="btn-check" onclick="checkAnswers()">✅ පිළිතුරු පරීක්ෂා කරන්න</button>
-            <div id="score-result" style="margin-top:15px; font-size:18px; font-weight:bold; text-align:center;"></div>
+            <div id="score-result" style="margin-top:14px; font-size:17px; font-weight:bold; text-align:center;"></div>
         </div>
     </div>
 
-    <!-- 20-Minute Password Lock Screen -->
+    <!-- Lock Screen -->
     <div id="lock-screen">
         <div class="lock-card">
-            <div style="font-size:38px; margin-bottom:8px;">🔒</div>
-            <h3 style="margin-bottom:4px;">කාලය අවසන් විය</h3>
-            <p style="font-size:13px; color:#64748b;">නැවත පිටුව විවෘත කිරීමට මුරපදය (Password) ඇතුළත් කරන්න.</p>
+            <div style="font-size:36px; margin-bottom:8px;">🔒</div>
+            <h3>කාලය අවසන් විය</h3>
+            <p style="font-size:13px; color:#64748b; margin-top:4px;">නැවත විවෘත කිරීමට මුරපදය ඇතුළත් කරන්න.</p>
             <input type="password" id="pass-input" class="lock-input" placeholder="Password ඇතුළත් කරන්න">
             <button class="lock-btn" onclick="unlockApp()">විවෘත කරන්න</button>
-            <p id="lock-err" style="color:red; font-size:12px; margin-top:8px; display:none;">මුරපදය වැරදියි! නැවත උත්සාහ කරන්න.</p>
+            <p id="lock-err" style="color:red; font-size:12px; margin-top:6px; display:none;">මුරපදය වැරදියි!</p>
         </div>
     </div>
 
     <script>
+        // Images Setup with Fallback
+        document.getElementById('p-img').src = "https://i.postimg.cc/vZpyjTvG/5f4a2799-6616-4063-b59c-9a98d778267d.webp";
+        document.getElementById('h-img').src = "https://i.postimg.cc/nzfHsrs5/Screenshot-20261109-201117-(1).jpg";
+
+        // Interactive Simulator Logic
+        let selL = 7;
+        let selR = 8;
+        function selectFinger(hand, val) {
+            if (hand === 'L') selL = val;
+            if (hand === 'R') selR = val;
+
+            const btns = document.querySelectorAll('.finger-btn');
+            btns.forEach(b => {
+                const isLeft = b.getAttribute('onclick').includes("'L'");
+                const bVal = parseInt(b.getAttribute('onclick').split(',')[1]);
+                if ((isLeft && bVal === selL) || (!isLeft && bVal === selR)) {
+                    b.classList.add('active');
+                } else if ((isLeft && hand === 'L') || (!isLeft && hand === 'R')) {
+                    b.classList.remove('active');
+                }
+            });
+
+            const downFingers = (selL - 5) + (selR - 5);
+            const downTens = downFingers * 10;
+            const upLeft = 10 - selL;
+            const upRight = 10 - selR;
+            const upProduct = upLeft * upRight;
+            const total = downTens + upProduct;
+
+            document.getElementById('sim-text').innerHTML = `
+                ගණනය: ${selL} × ${selR} = ${total}<br>
+                <span style="font-size:13px; font-weight:normal; color:#475569;">
+                    (පහළ ඇඟිලි ${downFingers} × 10 = ${downTens}) + (ඉහළ ඇඟිලි ${upLeft} × ${upRight} = ${upProduct}) 👉 ${downTens} + ${upProduct} = ${total}
+                </span>
+            `;
+        }
+
+        // Questions Logic
         let currentQuestions = [];
         function generateQuestions() {
             const container = document.getElementById('q-container');
@@ -225,7 +305,7 @@
             res.style.color = score >= 15 ? '#16a34a' : '#d97706';
         }
 
-        // 20-minute timer
+        // Lock & Timer
         let timeLeft = 20 * 60;
         const timerDisp = document.getElementById('timer-display');
         const lockScreen = document.getElementById('lock-screen');
@@ -256,4 +336,4 @@
         generateQuestions();
     </script>
 </body>
-                </html>
+</html>
