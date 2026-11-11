@@ -57,9 +57,9 @@
             text-align: center; background: #ffffff; padding: 10px;
             border-radius: 12px; border: 2px dashed #94a3b8; margin-bottom: 14px;
         }
-        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; max-height: 320px; }
+        .diagram-box img { max-width: 100%; height: auto; border-radius: 8px; max-height: 340px; display: inline-block; }
 
-        /* Interactive Simulator (ටච් කරලා හදන සාම්පල් කොටුව) */
+        /* Interactive Simulator (සාම්පල් කොටුව) */
         .sim-box {
             background: #eef2ff; border: 2px solid #c7d2fe; border-radius: 14px;
             padding: 16px; margin: 15px 0; text-align: center;
@@ -133,7 +133,7 @@
             <span id="timer-display">20:00</span>
         </div>
         <div class="profile-card">
-            <img src="https://lh3.googleusercontent.com/d/1X_5v9k8_placeholder" id="p-img" alt="Nethmi Bhagya">
+            <img src="https://i.postimg.cc/vZpyjTvG/5f4a2799-6616-4063-b59c-9a98d778267d.webp" alt="Nethmi Bhagya">
         </div>
         <div class="creator-tag">Created by Nethmi Bhagya</div>
         <div class="school-tag">ර/කුරුවිට මධ්‍ය මහා විද්‍යාලය (ජාතික පාසල)</div>
@@ -141,14 +141,15 @@
     </div>
 
     <div class="container">
-        <!-- Tutorial & Hand Diagram -->
+        <!-- Hand Diagram Card -->
         <div class="card">
             <div class="card-title">📖 ඇඟිලි වල අගයන් හඳුනාගනිමු</div>
             <div class="diagram-box">
-                <img id="h-img" src="" alt="Hand Values Diagram">
+                <!-- ඔබ upload කළ ගොනුවේ නම කෙළින්ම මෙහි ඇත -->
+                <img src="./Screenshot_20261109_201117%20(1).jpg" alt="Finger Values Diagram" onerror="this.src='Screenshot_20261109_201117 (1).jpg';">
             </div>
 
-            <!-- Interactive Hands Simulator (ටච් කර සාම්පල් හදන කොටුව) -->
+            <!-- Interactive Simulator -->
             <div class="sim-box">
                 <div style="font-size:15px; font-weight:bold; color:#312e81; margin-bottom:8px;">
                     🖐️ ඇඟිලි ස්පර්ශ කර සාම්පල් ගණනය කර බලන්න:
@@ -179,8 +180,8 @@
                 </div>
             </div>
 
-            <div class="step-pill"><strong>පියවර 1:</strong> සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස ගණන් ගන්න.[cite: 1]</div>
-            <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක ස්පර්ශ කරන්න.[cite: 1]</div>
+            <div class="step-pill"><strong>පියවර 1:</strong> සුළැඟිල්ල = 6, වෙදැඟිල්ල = 7, මැදැඟිල්ල = 8, දබරැඟිල්ල = 9, මහපට ඇඟිල්ල = 10 ලෙස අගයන් වෙන් කරගන්න.[cite: 1]</div>
+            <div class="step-pill"><strong>පියවර 2:</strong> ගුණ කිරීමට අවශ්‍ය ඇඟිලි දෙක ස්පර්ශ කරන්න (උදා: 7 × 8 සඳහා වම් අතේ 7 සහ දකුණු අතේ 8).[cite: 1]</div>
             <div class="step-pill"><strong>පියවර 3:</strong> ස්පර්ශ කළ ඇඟිලි සහ ඊට පහළ සියලු ඇඟිලි ගණන් කර 10න් ගුණ කරන්න (ඇඟිලි 5 = 50).[cite: 1]</div>
             <div class="step-pill"><strong>පියවර 4:</strong> ඉහළින් ඉතිරි වූ ඇඟිලි ගණන් දෙක එකිනෙක ගුණ කර එකතු කරන්න (3 × 2 = 6 👉 50 + 6 = 56).[cite: 1]</div>
         </div>
@@ -197,12 +198,12 @@
         </div>
     </div>
 
-    <!-- Lock Screen -->
+    <!-- 20-min Password Lock Screen -->
     <div id="lock-screen">
         <div class="lock-card">
             <div style="font-size:36px; margin-bottom:8px;">🔒</div>
             <h3>කාලය අවසන් විය</h3>
-            <p style="font-size:13px; color:#64748b; margin-top:4px;">නැවත විවෘත කිරීමට මුරපදය ඇතුළත් කරන්න.</p>
+            <p style="font-size:13px; color:#64748b; margin-top:4px;">නැවත විවෘත කිරීමට මුරපදය (Password) ඇතුළත් කරන්න.</p>
             <input type="password" id="pass-input" class="lock-input" placeholder="Password ඇතුළත් කරන්න">
             <button class="lock-btn" onclick="unlockApp()">විවෘත කරන්න</button>
             <p id="lock-err" style="color:red; font-size:12px; margin-top:6px; display:none;">මුරපදය වැරදියි!</p>
@@ -210,10 +211,6 @@
     </div>
 
     <script>
-        // Images Setup with Fallback
-        document.getElementById('p-img').src = "https://i.postimg.cc/vZpyjTvG/5f4a2799-6616-4063-b59c-9a98d778267d.webp";
-        document.getElementById('h-img').src = "https://i.postimg.cc/nzfHsrs5/Screenshot-20261109-201117-(1).jpg";
-
         // Interactive Simulator Logic
         let selL = 7;
         let selR = 8;
